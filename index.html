@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Heroes of the storm</title>
+    <link rel="stylesheet" href="node_modules/angular-material/angular-material.css">
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="node_modules/angular-data-table/release/dataTable.css">
+    <link rel="stylesheet" href="node_modules/angular-data-table/release/material.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="node_modules/angular/angular.js"></script> 
+    <script src="node_modules/angular-aria/angular-aria.js"></script> 
+    <script src="node_modules/angular-animate/angular-animate.js"></script> 
+    <script src="node_modules/angular-material/angular-material.js"></script> 
+    <script src="node_modules/angular-data-table/release/dataTable.js"></script> 
+    <script src="node_modules/angular-data-table/release/dataTable.helpers.js"></script> 
+    <script src="node_modules/angular-data-table/release/dataTable.es6.js"></script> 
+    <script src="app/app.js"></script>
+    <script src="app/controllers/appController.js"></script>
+  </head>
+  <body ng-app="App">
+    <div ng-controller="AppController">
+      <!-- Container #1 (see wireframe) -->
+      <md-toolbar layout="row">
+        <md-button class="md-icon-button md-primary menu-button" aria-label="Settings">
+          <md-icon md-svg-icon="assets/img/menu.svg"></md-icon>
+        </md-button>
+        <h3 ng-hide="heroe_selected">Heroes of the storm - Select a hero</h3>
+        <h3 ng-show="heroe_selected">Heroes of the storm - {{heroe_selected.name}}</h3>
+      </md-toolbar>
+
+      <!-- Container #2 -->
+      <div flex layout="row">
+
+          <!-- Container #3 -->
+          <md-sidenav md-is-locked-open="true" class="md-whiteframe-z2">
+            <md-list>
+              <!-- List item -->
+              <md-list-item ng-repeat="heroe in heroes">
+                  <md-progress-circular ng-hide="loaded" md-mode="indeterminate"></md-progress-circular>
+                  <md-button ng-click="selectHeroe(heroe)">
+                    <img src="{{heroe.img}}" class="avat" alt="image caption" width="40px" height="40px">
+                    {{heroe.name}}
+                  </md-button>
+              </md-list-item>
+
+            </md-list>
+          </md-sidenav>
+
+          <!-- Container #4 -->
+          <md-content flex id="content">
+            <div class="levels" ng-if="heroe_selected==null">
+              <h3>Select a hero to see stats</h3>
+            </div>
+            <md-card ng-if="heroe_selected">
+              <md-card-title>
+                <md-card-title-text>
+                  <span class="md-headline"><strong>{{heroe_selected.name}}</strong></span>
+                  <span class="md-subhead">{{heroe_selected.type1}} {{heroe_selected.type2}}</span>
+                </md-card-title-text>
+                <md-card-title-media>
+                  <div class="md-media-sm card-media">
+                    <img src="{{heroe_selected.img}}" alt="image caption">
+                  </div>
+                </md-card-title-media>
+              </md-card-title>
+              <div class="levels" ng-if="level1">
+                <p><strong>Level 1</strong></p>
+                <dtable options="options" rows="level1" class="material dt">
+                  <column name="Name" width="200" flex-grow="2">
+                    {{$row.name}}
+                  </column>
+                  <!--<column name="Description">
+                    {{$row.description}}
+                    <md-tooltip md-visible="demo.showTooltip" md-direction="{{demo.tipDirection}}">
+                      {{$row.description}}
+                    </md-tooltip>
+                  </column>-->
+                  <column name="Games played">
+                    {{$row.games_played}}
+                  </column>
+                  <column name="Popularity">
+                    {{$row.popularity}}
+                  </column>
+                  <column name="% Victory">
+                    {{$row.victory}}
+                  </column>
+                </dtable>
+              </div>
+              <div class="levels" ng-if="level4">
+                <p><strong>Level 4</strong></p>
+                <dtable options="options" rows="level4" class="material dt">
+                  <column name="Name" width="200" flex-grow="2">
+                    {{$row.name}}
+                  </column>
+                  <!--<column name="Description">
+                    {{$row.description}}
+                  </column>-->
+                  <column name="Games played">
+                    {{$row.games_played}}
+                  </column>
+                  <column name="Popularity">
+                    {{$row.popularity}}
+                  </column>
+                  <column name="% Victory">
+                    {{$row.victory}}
+                  </column>
+                </dtable>
+              </div>
+              <div class="levels" ng-if="level7">
+                <p><strong>Level 7</strong></p>
+                <dtable options="options" rows="level7" class="material dt">
+                  <column name="Name" width="200" flex-grow="2">
+                    {{$row.name}}
+                  </column>
+                  <!--<column name="Description">
+                    {{$row.description}}
+                  </column>-->
+                  <column name="Games played">
+                    {{$row.games_played}}
+                  </column>
+                  <column name="Popularity">
+                    {{$row.popularity}}
+                  </column>
+                  <column name="% Victory">
+                    {{$row.victory}}
+                  </column>
+                </dtable>
+              </div>
+              <div class="levels" ng-if="level10">
+                <p><strong>Level 10</strong></p>
+                <dtable options="options" rows="level10" class="material dt">
+                  <column name="Name" width="200" flex-grow="2">
+                    {{$row.name}}
+                  </column>
+                  <!--<column name="Description">
+                    {{$row.description}}
+                  </column>-->
+                  <column name="Games played">
+                    {{$row.games_played}}
+                  </column>
+                  <column name="Popularity">
+                    {{$row.popularity}}
+                  </column>
+                  <column name="% Victory">
+                    {{$row.victory}}
+                  </column>
+                </dtable>
+              </div>
+              <div class="levels" ng-if="level13">
+                <p><strong>Level 13</strong></p>
+                <dtable options="options" rows="level13" class="material dt">
+                  <column name="Name" width="200" flex-grow="2">
+                    {{$row.name}}
+                  </column>
+                  <!--<column name="Description">
+                    {{$row.description}}
+                  </column>-->
+                  <column name="Games played">
+                    {{$row.games_played}}
+                  </column>
+                  <column name="Popularity">
+                    {{$row.popularity}}
+                  </column>
+                  <column name="% Victory">
+                    {{$row.victory}}
+                  </column>
+                </dtable>
+              </div>
+              <div class="levels" ng-if="level16">
+                <p><strong>Level 16</strong></p>
+                <dtable options="options" rows="level16" class="material dt">
+                  <column name="Name" width="200" flex-grow="2">
+                    {{$row.name}}
+                  </column>
+                  <!--<column name="Description">
+                    {{$row.description}}
+                  </column>-->
+                  <column name="Games played">
+                    {{$row.games_played}}
+                  </column>
+                  <column name="Popularity">
+                    {{$row.popularity}}
+                  </column>
+                  <column name="% Victory">
+                    {{$row.victory}}
+                  </column>
+                </dtable>
+              </div>
+              <div class="levels" ng-if="level20">
+                <p><strong>Level 20</strong></p>
+                <dtable options="options" rows="level20" class="material dt">
+                  <column name="Name" width="200" flex-grow="2">
+                    {{$row.name}}
+                  </column>
+                  <!--<column name="Description">
+                    {{$row.description}}
+                  </column>-->
+                  <column name="Games played">
+                    {{$row.games_played}}
+                  </column>
+                  <column name="Popularity">
+                    {{$row.popularity}}
+                  </column>
+                  <column name="% Victory">
+                    {{$row.victory}}
+                  </column>
+                </dtable>
+              </div>
+              <md-card-actions layout="row" layout-align="end center">
+                <!--<md-button>Action 1</md-button>
+                <md-button>Action 2</md-button>-->
+              </md-card-actions>
+            </md-card>
+          </md-content>
+
+      </div>
+    </div>
+  </body>
+  <script>
+    // You can also require other files to run in this process
+    require('./renderer.js')
+  </script>
+</html>
