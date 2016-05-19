@@ -1,12 +1,12 @@
 # Electron-Hots
 
-Important : You have to create a 'js' folder before running 'npm run watch' !
+- Electron
+- Angular Js
+- Angular Material
 
 Start : 
 
 ```bash
-# Clone this repository
-# Go into the repository
 # Install dependencies and run the app
 npm install 
 npm start

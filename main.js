@@ -15,7 +15,8 @@ function createWindow () {
     width: 920, 
     height: 600,
     frame: false,
-    hasShadow: false
+    hasShadow: false,
+    icon: `file://${__dirname}/heroes.ico`
   })
 
   // and load the index.html of the app.
