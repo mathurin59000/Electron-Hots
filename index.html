@@ -52,166 +52,337 @@
             <div class="levels" ng-if="heroe_selected==null">
               <h3>Select a hero to see stats</h3>
             </div>
-            <md-card ng-if="heroe_selected">
-              <md-card-title>
-                <md-card-title-text>
-                  <span class="md-headline"><strong>{{heroe_selected.name}}</strong></span>
-                  <span class="md-subhead">{{heroe_selected.type1}} {{heroe_selected.type2}}</span>
-                </md-card-title-text>
-                <md-card-title-media>
-                  <div class="md-media-sm card-media">
-                    <img src="{{heroe_selected.img}}" alt="image caption">
-                  </div>
-                </md-card-title-media>
-              </md-card-title>
-              <div class="levels" ng-if="level1">
-                <p><strong>Level 1</strong></p>
-                <dtable options="options" rows="level1" class="material dt">
-                  <column name="Name" width="200" flex-grow="2">
-                    {{$row.name}}
-                  </column>
-                  <!--<column name="Description">
-                    {{$row.description}}
-                    <md-tooltip md-visible="demo.showTooltip" md-direction="{{demo.tipDirection}}">
-                      {{$row.description}}
-                    </md-tooltip>
-                  </column>-->
-                  <column name="Games played">
-                    {{$row.games_played}}
-                  </column>
-                  <column name="Popularity">
-                    {{$row.popularity}}
-                  </column>
-                  <column name="% Victory">
-                    {{$row.victory}}
-                  </column>
-                </dtable>
-              </div>
-              <div class="levels" ng-if="level4">
-                <p><strong>Level 4</strong></p>
-                <dtable options="options" rows="level4" class="material dt">
-                  <column name="Name" width="200" flex-grow="2">
-                    {{$row.name}}
-                  </column>
-                  <!--<column name="Description">
-                    {{$row.description}}
-                  </column>-->
-                  <column name="Games played">
-                    {{$row.games_played}}
-                  </column>
-                  <column name="Popularity">
-                    {{$row.popularity}}
-                  </column>
-                  <column name="% Victory">
-                    {{$row.victory}}
-                  </column>
-                </dtable>
-              </div>
-              <div class="levels" ng-if="level7">
-                <p><strong>Level 7</strong></p>
-                <dtable options="options" rows="level7" class="material dt">
-                  <column name="Name" width="200" flex-grow="2">
-                    {{$row.name}}
-                  </column>
-                  <!--<column name="Description">
-                    {{$row.description}}
-                  </column>-->
-                  <column name="Games played">
-                    {{$row.games_played}}
-                  </column>
-                  <column name="Popularity">
-                    {{$row.popularity}}
-                  </column>
-                  <column name="% Victory">
-                    {{$row.victory}}
-                  </column>
-                </dtable>
-              </div>
-              <div class="levels" ng-if="level10">
-                <p><strong>Level 10</strong></p>
-                <dtable options="options" rows="level10" class="material dt">
-                  <column name="Name" width="200" flex-grow="2">
-                    {{$row.name}}
-                  </column>
-                  <!--<column name="Description">
-                    {{$row.description}}
-                  </column>-->
-                  <column name="Games played">
-                    {{$row.games_played}}
-                  </column>
-                  <column name="Popularity">
-                    {{$row.popularity}}
-                  </column>
-                  <column name="% Victory">
-                    {{$row.victory}}
-                  </column>
-                </dtable>
-              </div>
-              <div class="levels" ng-if="level13">
-                <p><strong>Level 13</strong></p>
-                <dtable options="options" rows="level13" class="material dt">
-                  <column name="Name" width="200" flex-grow="2">
-                    {{$row.name}}
-                  </column>
-                  <!--<column name="Description">
-                    {{$row.description}}
-                  </column>-->
-                  <column name="Games played">
-                    {{$row.games_played}}
-                  </column>
-                  <column name="Popularity">
-                    {{$row.popularity}}
-                  </column>
-                  <column name="% Victory">
-                    {{$row.victory}}
-                  </column>
-                </dtable>
-              </div>
-              <div class="levels" ng-if="level16">
-                <p><strong>Level 16</strong></p>
-                <dtable options="options" rows="level16" class="material dt">
-                  <column name="Name" width="200" flex-grow="2">
-                    {{$row.name}}
-                  </column>
-                  <!--<column name="Description">
-                    {{$row.description}}
-                  </column>-->
-                  <column name="Games played">
-                    {{$row.games_played}}
-                  </column>
-                  <column name="Popularity">
-                    {{$row.popularity}}
-                  </column>
-                  <column name="% Victory">
-                    {{$row.victory}}
-                  </column>
-                </dtable>
-              </div>
-              <div class="levels" ng-if="level20">
-                <p><strong>Level 20</strong></p>
-                <dtable options="options" rows="level20" class="material dt">
-                  <column name="Name" width="200" flex-grow="2">
-                    {{$row.name}}
-                  </column>
-                  <!--<column name="Description">
-                    {{$row.description}}
-                  </column>-->
-                  <column name="Games played">
-                    {{$row.games_played}}
-                  </column>
-                  <column name="Popularity">
-                    {{$row.popularity}}
-                  </column>
-                  <column name="% Victory">
-                    {{$row.victory}}
-                  </column>
-                </dtable>
-              </div>
-              <md-card-actions layout="row" layout-align="end center">
-                <!--<md-button>Action 1</md-button>
-                <md-button>Action 2</md-button>-->
-              </md-card-actions>
-            </md-card>
+            <md-tabs md-dynamic-height md-border-bottom ng-if="heroe_selected">
+              <md-tab label="All builds">
+                <md-content class="md-padding">
+                  <md-card>
+                      <md-card-title>
+                        <md-card-title-text>
+                          <span class="md-headline"><strong>{{heroe_selected.name}}</strong></span>
+                          <span class="md-subhead">{{heroe_selected.type1}} {{heroe_selected.type2}}</span>
+                        </md-card-title-text>
+                        <md-card-title-media>
+                          <div class="md-media-sm card-media">
+                            <img src="{{heroe_selected.img}}" alt="image caption">
+                          </div>
+                        </md-card-title-media>
+                      </md-card-title>
+                      <div class="levels" ng-if="level1">
+                        <p><strong>Level 1</strong></p>
+                        <dtable options="options" rows="level1" class="material dt">
+                          <column name="Name" width="200" flex-grow="2">
+                            {{$row.name}}
+                          </column>
+                          <!--<column name="Description">
+                            {{$row.description}}
+                            <md-tooltip md-visible="demo.showTooltip" md-direction="{{demo.tipDirection}}">
+                              {{$row.description}}
+                            </md-tooltip>
+                          </column>-->
+                          <column name="Games played">
+                            {{$row.games_played}}
+                          </column>
+                          <column name="Popularity">
+                            {{$row.popularity}}
+                          </column>
+                          <column name="% Victory">
+                            {{$row.victory}}
+                          </column>
+                        </dtable>
+                      </div>
+                      <div class="levels" ng-if="level4">
+                        <p><strong>Level 4</strong></p>
+                        <dtable options="options" rows="level4" class="material dt">
+                          <column name="Name" width="200" flex-grow="2">
+                            {{$row.name}}
+                          </column>
+                          <!--<column name="Description">
+                            {{$row.description}}
+                          </column>-->
+                          <column name="Games played">
+                            {{$row.games_played}}
+                          </column>
+                          <column name="Popularity">
+                            {{$row.popularity}}
+                          </column>
+                          <column name="% Victory">
+                            {{$row.victory}}
+                          </column>
+                        </dtable>
+                      </div>
+                      <div class="levels" ng-if="level7">
+                        <p><strong>Level 7</strong></p>
+                        <dtable options="options" rows="level7" class="material dt">
+                          <column name="Name" width="200" flex-grow="2">
+                            {{$row.name}}
+                          </column>
+                          <!--<column name="Description">
+                            {{$row.description}}
+                          </column>-->
+                          <column name="Games played">
+                            {{$row.games_played}}
+                          </column>
+                          <column name="Popularity">
+                            {{$row.popularity}}
+                          </column>
+                          <column name="% Victory">
+                            {{$row.victory}}
+                          </column>
+                        </dtable>
+                      </div>
+                      <div class="levels" ng-if="level10">
+                        <p><strong>Level 10</strong></p>
+                        <dtable options="options" rows="level10" class="material dt">
+                          <column name="Name" width="200" flex-grow="2">
+                            {{$row.name}}
+                          </column>
+                          <!--<column name="Description">
+                            {{$row.description}}
+                          </column>-->
+                          <column name="Games played">
+                            {{$row.games_played}}
+                          </column>
+                          <column name="Popularity">
+                            {{$row.popularity}}
+                          </column>
+                          <column name="% Victory">
+                            {{$row.victory}}
+                          </column>
+                        </dtable>
+                      </div>
+                      <div class="levels" ng-if="level13">
+                        <p><strong>Level 13</strong></p>
+                        <dtable options="options" rows="level13" class="material dt">
+                          <column name="Name" width="200" flex-grow="2">
+                            {{$row.name}}
+                          </column>
+                          <!--<column name="Description">
+                            {{$row.description}}
+                          </column>-->
+                          <column name="Games played">
+                            {{$row.games_played}}
+                          </column>
+                          <column name="Popularity">
+                            {{$row.popularity}}
+                          </column>
+                          <column name="% Victory">
+                            {{$row.victory}}
+                          </column>
+                        </dtable>
+                      </div>
+                      <div class="levels" ng-if="level16">
+                        <p><strong>Level 16</strong></p>
+                        <dtable options="options" rows="level16" class="material dt">
+                          <column name="Name" width="200" flex-grow="2">
+                            {{$row.name}}
+                          </column>
+                          <!--<column name="Description">
+                            {{$row.description}}
+                          </column>-->
+                          <column name="Games played">
+                            {{$row.games_played}}
+                          </column>
+                          <column name="Popularity">
+                            {{$row.popularity}}
+                          </column>
+                          <column name="% Victory">
+                            {{$row.victory}}
+                          </column>
+                        </dtable>
+                      </div>
+                      <div class="levels" ng-if="level20">
+                        <p><strong>Level 20</strong></p>
+                        <dtable options="options" rows="level20" class="material dt">
+                          <column name="Name" width="200" flex-grow="2">
+                            {{$row.name}}
+                          </column>
+                          <!--<column name="Description">
+                            {{$row.description}}
+                          </column>-->
+                          <column name="Games played">
+                            {{$row.games_played}}
+                          </column>
+                          <column name="Popularity">
+                            {{$row.popularity}}
+                          </column>
+                          <column name="% Victory">
+                            {{$row.victory}}
+                          </column>
+                        </dtable>
+                      </div>
+                      <md-card-actions layout="row" layout-align="end center">
+                        <!--<md-button>Action 1</md-button>
+                        <md-button>Action 2</md-button>-->
+                      </md-card-actions>
+                    </md-card>
+                </md-content>
+              </md-tab>
+              <md-tab label="Quick Build">
+                <md-content class="md-padding">
+                  <md-card>
+                      <md-card-title>
+                        <md-card-title-text>
+                          <span class="md-headline"><strong>{{heroe_selected.name}}</strong></span>
+                          <span class="md-subhead">{{heroe_selected.type1}} {{heroe_selected.type2}}</span>
+                        </md-card-title-text>
+                        <md-card-title-media>
+                          <div class="md-media-sm card-media">
+                            <img src="{{heroe_selected.img}}" alt="image caption">
+                          </div>
+                        </md-card-title-media>
+                      </md-card-title>
+                      <div class="levels" ng-if="level1">
+                        <p><strong>Level 1</strong></p>
+                        <dtable options="options" rows="best_build_level1" class="material dt">
+                          <column name="Name" width="200" flex-grow="2">
+                            {{$row.name}}
+                          </column>
+                          <!--<column name="Description">
+                            {{$row.description}}
+                            <md-tooltip md-visible="demo.showTooltip" md-direction="{{demo.tipDirection}}">
+                              {{$row.description}}
+                            </md-tooltip>
+                          </column>-->
+                          <column name="Games played">
+                            {{$row.games_played}}
+                          </column>
+                          <column name="Popularity">
+                            {{$row.popularity}}
+                          </column>
+                          <column name="% Victory">
+                            {{$row.victory}}
+                          </column>
+                        </dtable>
+                      </div>
+                      <div class="levels" ng-if="level4">
+                        <p><strong>Level 4</strong></p>
+                        <dtable options="options" rows="best_build_level4" class="material dt">
+                          <column name="Name" width="200" flex-grow="2">
+                            {{$row.name}}
+                          </column>
+                          <!--<column name="Description">
+                            {{$row.description}}
+                          </column>-->
+                          <column name="Games played">
+                            {{$row.games_played}}
+                          </column>
+                          <column name="Popularity">
+                            {{$row.popularity}}
+                          </column>
+                          <column name="% Victory">
+                            {{$row.victory}}
+                          </column>
+                        </dtable>
+                      </div>
+                      <div class="levels" ng-if="level7">
+                        <p><strong>Level 7</strong></p>
+                        <dtable options="options" rows="best_build_level7" class="material dt">
+                          <column name="Name" width="200" flex-grow="2">
+                            {{$row.name}}
+                          </column>
+                          <!--<column name="Description">
+                            {{$row.description}}
+                          </column>-->
+                          <column name="Games played">
+                            {{$row.games_played}}
+                          </column>
+                          <column name="Popularity">
+                            {{$row.popularity}}
+                          </column>
+                          <column name="% Victory">
+                            {{$row.victory}}
+                          </column>
+                        </dtable>
+                      </div>
+                      <div class="levels" ng-if="level10">
+                        <p><strong>Level 10</strong></p>
+                        <dtable options="options" rows="best_build_level10" class="material dt">
+                          <column name="Name" width="200" flex-grow="2">
+                            {{$row.name}}
+                          </column>
+                          <!--<column name="Description">
+                            {{$row.description}}
+                          </column>-->
+                          <column name="Games played">
+                            {{$row.games_played}}
+                          </column>
+                          <column name="Popularity">
+                            {{$row.popularity}}
+                          </column>
+                          <column name="% Victory">
+                            {{$row.victory}}
+                          </column>
+                        </dtable>
+                      </div>
+                      <div class="levels" ng-if="level13">
+                        <p><strong>Level 13</strong></p>
+                        <dtable options="options" rows="best_build_level13" class="material dt">
+                          <column name="Name" width="200" flex-grow="2">
+                            {{$row.name}}
+                          </column>
+                          <!--<column name="Description">
+                            {{$row.description}}
+                          </column>-->
+                          <column name="Games played">
+                            {{$row.games_played}}
+                          </column>
+                          <column name="Popularity">
+                            {{$row.popularity}}
+                          </column>
+                          <column name="% Victory">
+                            {{$row.victory}}
+                          </column>
+                        </dtable>
+                      </div>
+                      <div class="levels" ng-if="level16">
+                        <p><strong>Level 16</strong></p>
+                        <dtable options="options" rows="best_build_level16" class="material dt">
+                          <column name="Name" width="200" flex-grow="2">
+                            {{$row.name}}
+                          </column>
+                          <!--<column name="Description">
+                            {{$row.description}}
+                          </column>-->
+                          <column name="Games played">
+                            {{$row.games_played}}
+                          </column>
+                          <column name="Popularity">
+                            {{$row.popularity}}
+                          </column>
+                          <column name="% Victory">
+                            {{$row.victory}}
+                          </column>
+                        </dtable>
+                      </div>
+                      <div class="levels" ng-if="level20">
+                        <p><strong>Level 20</strong></p>
+                        <dtable options="options" rows="best_build_level20" class="material dt">
+                          <column name="Name" width="200" flex-grow="2">
+                            {{$row.name}}
+                          </column>
+                          <!--<column name="Description">
+                            {{$row.description}}
+                          </column>-->
+                          <column name="Games played">
+                            {{$row.games_played}}
+                          </column>
+                          <column name="Popularity">
+                            {{$row.popularity}}
+                          </column>
+                          <column name="% Victory">
+                            {{$row.victory}}
+                          </column>
+                        </dtable>
+                      </div>
+                      <md-card-actions layout="row" layout-align="end center">
+                        <!--<md-button>Action 1</md-button>
+                        <md-button>Action 2</md-button>-->
+                      </md-card-actions>
+                    </md-card>
+                </md-content>
+              </md-tab>
+            </md-tabs>
+            
           </md-content>
 
       </div>

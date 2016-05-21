@@ -12,9 +12,9 @@ let mainWindow
 function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 920, 
-    height: 600,
-    frame: false,
+    width: 1100, 
+    height: 800,
+    frame: true,
     hasShadow: false,
     icon: `file://${__dirname}/heroes.ico`
   })
